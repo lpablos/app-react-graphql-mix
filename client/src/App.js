@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import 'bootswatch/dist/lux/bootstrap.min.css'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
-function App() {
+import MessageList from './components/MessageList'
+import MessageForm from './components/MessageForm'
+import NavBar from './components/NavBar'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <NavBar/>
+      <div className="container p-4">
+        <Routes>
+            <Route path='/' element={<MessageList />}></Route>
+            <Route path='new-message' element={<MessageForm />}></Route>
+          </Routes>  
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
+
